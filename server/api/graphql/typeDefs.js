@@ -1,6 +1,9 @@
 const { gql } = require('apollo-server-express')
 
 const typeDefs = gql`
+
+directive @auth on FIELD_DEFINITION
+
   type User {
     _id: ID
     email: String
@@ -11,19 +14,19 @@ const typeDefs = gql`
     text: String!
   }
 
-  type Query {
-    currentUser: User
-    feedbacks: [Feedback]
-  }
-
   type AuthPayload {
     user: User
+  }
+
+  type Query {
+    currentUser: User
+    feedbacks: [Feedback] @auth
   }
 
   type Mutation {
 
     # feedback
-    feedback(message: String!): Boolean!
+    feedback(message: String!): Boolean! @auth
 
     # user
     signup(firstName: String!, lastName: String!, email: String!, password: String!): AuthPayload

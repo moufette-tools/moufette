@@ -18,6 +18,7 @@ const passport = require('./api/graphql/passport');
 
 const typeDefs = require('./api/graphql/typeDefs')
 const resolvers = require('./api/graphql/resolvers')
+const AuhtDirective = require('./api/graphql/AuthDirective')
 const isDev = process.env.NODE_ENV !== 'production';
 
 const ngrok =
@@ -50,6 +51,9 @@ app.use(passport);
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  schemaDirectives: {
+    auth: AuhtDirective,
+  },
   context: ({ req, res }) => buildContext({ req, res }),
   playground: {
     settings: {

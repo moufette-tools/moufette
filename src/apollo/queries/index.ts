@@ -8,3 +8,12 @@ export const FEEDBACKS = gql`
     }
   }
 `;
+
+export const USER = gql`
+  query {
+    currentUser {
+      _id
+      email
+    }
+  }
+`;
