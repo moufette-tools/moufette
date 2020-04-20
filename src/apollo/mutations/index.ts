@@ -6,3 +6,10 @@ export const FEEDBACK_MUTATION = gql`
     feedback(message: $message)
   }
 `;
+
+
+export const LOGOUT = gql`
+  mutation {
+    logout
+  }
+`;

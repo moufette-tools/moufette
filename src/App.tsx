@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Layout, Menu, Breadcrumb, Row } from 'antd';
+import { Layout, Menu, Dropdown, Row } from 'antd';
 import {
   SettingOutlined,
   MessageOutlined,
@@ -8,8 +8,7 @@ import {
   MenuFoldOutlined
 } from '@ant-design/icons';
 import styled from 'styled-components'
-import { useQuery } from '@apollo/client';
-
+import { useQuery, useMutation } from '@apollo/client';
 
 import {
   BrowserRouter as Router,
@@ -21,6 +20,7 @@ import {
 
 import Feedbacks from './pages/Feedbacks'
 import Login from './pages/Login'
+import UserDropdown from './components/UserDropdown'
 
 import { USER } from './apollo/queries'
 
@@ -59,10 +59,11 @@ const BasicExample = () => {
   const [collapsed, setCollapsed] = useState(false)
   const { loading, error, data } = useQuery(USER, {})
 
-
   const onCollapse = (collapsed: boolean) => {
     setCollapsed(collapsed);
   };
+
+
   return (
     <Router>
 
@@ -107,9 +108,12 @@ const BasicExample = () => {
                     className: 'trigger',
                     onClick: () => onCollapse(!collapsed),
                   } as any)}
+
                   <span style={{ paddingRight: 24 }}>
-                    {data && data.currentUser && data.currentUser.email}
+                    <UserDropdown currentUser={data?.currentUser} />
                   </span>
+
+
                 </Row>
               </Header>
               <Content
