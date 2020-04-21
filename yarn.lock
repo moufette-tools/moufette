@@ -8130,6 +8130,30 @@ mongoose@^5.9.9:
     sift "7.0.1"
     sliced "1.0.1"
 
+"moufette-widget@https://github.com/moufette-tools/moufette-widget.git":
+  version "0.1.1"
+  resolved "https://github.com/moufette-tools/moufette-widget.git#36222795c430253f70fa9ceb4a80a4f7e8f73794"
+  dependencies:
+    "@apollo/client" "^3.0.0-beta.43"
+    "@testing-library/jest-dom" "^4.2.4"
+    "@testing-library/react" "^9.3.2"
+    "@testing-library/user-event" "^7.1.2"
+    "@types/jest" "^24.0.0"
+    "@types/node" "^12.0.0"
+    "@types/react" "^16.9.0"
+    "@types/react-dom" "^16.9.0"
+    "@types/styled-components" "^5.1.0"
+    apollo-boost "^0.4.7"
+    babel-plugin-import "^1.13.0"
+    customize-cra "^0.9.1"
+    graphql "^15.0.0"
+    react "^16.13.1"
+    react-app-rewired "^2.1.5"
+    react-dom "^16.13.1"
+    react-scripts "3.4.1"
+    styled-components "^5.1.0"
+    typescript "~3.7.2"
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
