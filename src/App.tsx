@@ -20,6 +20,7 @@ import {
 
 import Feedbacks from './pages/Feedbacks'
 import Login from './pages/Login'
+import Setup from './pages/Setup'
 import UserDropdown from './components/UserDropdown'
 
 import { USER } from './apollo/queries'
@@ -78,7 +79,7 @@ const BasicExample = () => {
           <Layout style={{ minHeight: '100vh' }}>
             <Sider trigger={null} collapsible collapsed={collapsed}>
               <div className="logo">
-                {collapsed ? 'M' : 'Moufette v0.1'}
+                {collapsed ? <span style={{ fontSize: 'x-large' }}>🦨</span> : 'Moufette v0.1'}
               </div>
               <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                 <Menu.Item key="1">
@@ -130,6 +131,10 @@ const BasicExample = () => {
 
                 <Route path="/feedbacks">
                   <Feedbacks />
+                </Route>
+
+                <Route path="/setup">
+                  <Setup />
                 </Route>
               </Content>
             </Layout>
