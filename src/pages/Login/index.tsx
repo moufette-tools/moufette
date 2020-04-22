@@ -9,6 +9,12 @@ import {
 import styled from 'styled-components/macro'
 
 import { LOGIN } from './mutation'
+import { USER } from '../../apollo/queries'
+
+const layout = {
+   labelCol: { span: 8 },
+   wrapperCol: { span: 16 },
+};
 
 const tailLayout = {
    wrapperCol: {
@@ -25,7 +31,15 @@ const Demo = () => {
 
    const onFinish = (values: any) => {
       console.log('Success:', values);
-      login({ variables: values }).then(() => {
+      login({
+         variables: values,
+         update(cache, { data: { login } }) {
+            cache.writeQuery({
+               query: USER,
+               data: { currentUser: login.user },
+            });
+         }
+      }).then(() => {
          let { from } = location.state || { from: { pathname: "/" } } as any;
          history.replace(from);
       }).catch(console.log)
@@ -38,7 +52,7 @@ const Demo = () => {
    return (
       <Row justify="center" align="middle" css={`height: 100%`}>
          <Form
-
+            {...layout}
             name="basic"
             initialValues={{
                remember: true,

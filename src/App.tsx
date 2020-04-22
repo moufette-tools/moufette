@@ -30,16 +30,13 @@ const { SubMenu } = Menu;
 
 
 function PrivateRoute({ children, ...rest }: any) {
-
   const { loading, error, data } = useQuery(USER, {})
   return (
     <Route
       {...rest}
       render={({ location }) => {
-
         if (loading) return <div>loading...</div>
-
-        return data.currentUser ? (
+        return data?.currentUser ? (
           children
         ) : (
             <Redirect
@@ -48,6 +45,28 @@ function PrivateRoute({ children, ...rest }: any) {
                 state: { from: location }
               }}
             />
+          )
+      }
+      }
+    />
+  );
+}
+
+function PublicRoute({ children, ...rest }: any) {
+  const { loading, error, data } = useQuery(USER, {})
+  return (
+    <Route
+      {...rest}
+      render={({ location }) => {
+        if (loading) return <div>loading...</div>
+        return data?.currentUser ? (
+          <Redirect
+            to={{
+              pathname: "/",
+            }}
+          />
+        ) : (
+            children
           )
       }
       }
@@ -70,9 +89,9 @@ const BasicExample = () => {
 
       <Switch>
 
-        <Route public path="/login">
+        <PublicRoute path="/login">
           <Login />
-        </Route>
+        </PublicRoute>
 
         <PrivateRoute>
 

@@ -16,6 +16,7 @@ export const USER = gql`
       email
       team {
         _id
+        name
         token
       }
     }

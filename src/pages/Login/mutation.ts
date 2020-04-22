@@ -8,6 +8,7 @@ mutation Login($email: String!, $password: String!) {
        _id
        email
        team {
+         _id
          name
          token
        }
