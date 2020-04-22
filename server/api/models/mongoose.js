@@ -4,7 +4,7 @@ const isDev = process.env.NODE_ENV !== 'production';
 
 const mongoUrl = isDev
   ? 'mongodb://localhost/moufette'
-  : process.env.MONGO_URL
+  : process.env.MONGODB_URI
 
 mongoose.Promise = global.Promise;
 mongoose.set('useFindAndModify', false);

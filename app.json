@@ -1,0 +1,29 @@
+{
+   "name": "Moufette",
+   "description": "Moufette is developer-friendly, open-source users feedback tool.",
+   "repository": "https://github.com/moufette-tools/moufette",
+   "logo": "https://avatars2.githubusercontent.com/u/63864280?s=200&v=4",
+   "keywords": [
+      "graphql",
+      "express",
+      "react",
+      "feedback",
+      "mongodb"
+   ],
+   "addons": [
+      {
+         "plan": "mongolab:sandbox",
+         "as": "MONGO"
+      }
+   ],
+   "env": {
+      "EXPRESS_SESSION_SECRET": {
+         "description": "A secret key for verifying user session.",
+         "generator": "secret"
+      },
+      "JWT_SECRET": {
+         "description": "A secret key for verifying api tokens",
+         "generator": "secret"
+      }
+   }
+}
