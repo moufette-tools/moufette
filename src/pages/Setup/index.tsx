@@ -1,9 +1,9 @@
 import React from 'react'
 
 
-const Setup = () => {
+const Setup = ({ currentUser }: any) => {
    const url = window.location.origin
-   const token = ''
+   const token = currentUser?.team?.token
    return (
       <pre>
          {`

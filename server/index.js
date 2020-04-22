@@ -2,6 +2,7 @@
 require('dotenv').config()
 
 const express = require('express');
+const cors = require('cors')
 // const expressGraphQL = require('express-graphql');
 const bodyParser = require('body-parser');
 const secure = require('ssl-express-www');
@@ -19,6 +20,7 @@ const passport = require('./api/graphql/passport');
 const typeDefs = require('./api/graphql/typeDefs')
 const resolvers = require('./api/graphql/resolvers')
 const AuhtDirective = require('./api/graphql/AuthDirective')
+const TokenDirective = require('./api/graphql/TokenDirective')
 const isDev = process.env.NODE_ENV !== 'production';
 
 const ngrok =
@@ -38,6 +40,8 @@ if (!isDev) {
   app.use(secure);
 }
 
+app.use(cors()) // enable `cors` to set HTTP response header: Access-Control-Allow-Origin: *
+
 // app.use(bodyParser.json()); // to support JSON-encoded bodies
 // app.use(
 //   bodyParser.urlencoded({
@@ -49,10 +53,12 @@ if (!isDev) {
 app.use(passport);
 
 const server = new ApolloServer({
+  cors: false,
   typeDefs,
   resolvers,
   schemaDirectives: {
     auth: AuhtDirective,
+    token: TokenDirective
   },
   context: ({ req, res }) => buildContext({ req, res }),
   playground: {

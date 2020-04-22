@@ -9,11 +9,22 @@ const userSchema = mongoose.Schema(
       required: true,
       unique: true,
     },
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+    },
     password: {
       type: String,
       required: true,
-
     },
+    team: {
+      type: String,
+      required: true,
+    }
   },
   { timestamps: {} },
 );
@@ -21,7 +32,7 @@ const userSchema = mongoose.Schema(
 
 
 // index ======================
-userSchema.index({ name: 'text', email: 'text' });
+userSchema.index({ email: 'text' });
 
 // methods ======================
 userSchema.methods.comparePassword = function (candidatePassword) {

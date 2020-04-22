@@ -14,6 +14,10 @@ export const USER = gql`
     currentUser {
       _id
       email
+      team {
+        _id
+        token
+      }
     }
   }
 `;

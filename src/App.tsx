@@ -134,7 +134,7 @@ const BasicExample = () => {
                 </Route>
 
                 <Route path="/setup">
-                  <Setup />
+                  <Setup currentUser={data?.currentUser} />
                 </Route>
               </Content>
             </Layout>

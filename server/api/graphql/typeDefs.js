@@ -3,10 +3,12 @@ const { gql } = require('apollo-server-express')
 const typeDefs = gql`
 
 directive @auth on FIELD_DEFINITION
+directive @token on FIELD_DEFINITION
 
   type User {
     _id: ID
     email: String
+    team: Team
   }
 
   type Feedback {
@@ -18,6 +20,12 @@ directive @auth on FIELD_DEFINITION
     user: User
   }
 
+  type Team {
+    _id: ID!
+    name: String!
+    token: String!
+  }
+
   type Query {
     currentUser: User
     feedbacks: [Feedback] @auth
@@ -26,10 +34,10 @@ directive @auth on FIELD_DEFINITION
   type Mutation {
 
     # feedback
-    feedback(message: String!): Boolean! @auth
+    feedback(message: String!): Boolean! @token
 
     # user
-    signup(firstName: String!, lastName: String!, email: String!, password: String!): AuthPayload
+    signup(companyName: String!, firstName: String!, lastName: String!, email: String!, password: String!): AuthPayload
     login(email: String!, password: String!): AuthPayload
     logout: Boolean
   }
