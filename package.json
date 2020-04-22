@@ -33,6 +33,7 @@
     "moufette-widget": "https://github.com/moufette-tools/moufette-widget.git",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "raw-loader": "^4.0.1",
     "react": "^16.13.1",
     "react-app-rewired": "^2.1.5",
     "react-dom": "^16.13.1",
@@ -43,7 +44,8 @@
     "redux-saga": "^1.1.3",
     "ssl-express-www": "^3.0.6",
     "styled-components": "^5.1.0",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "uglify-js": "^3.9.1"
   },
   "proxy": "http://localhost:5000/",
   "scripts": {
@@ -53,7 +55,8 @@
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
     "copy-widget": "mkdir -p public/widget/ && cp node_modules/moufette-widget/build/static/js/main.* public/widget/",
-    "postinstall": "yarn copy-widget"
+    "postinstall": "yarn copy-widget && yarn min-js-loader",
+    "min-js-loader": "uglifyjs src/scripts/js-loader.js -o src/scripts/js-loader.min.txt -c -m"
   },
   "eslintConfig": {
     "extends": "react-app"
