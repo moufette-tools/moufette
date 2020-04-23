@@ -21,6 +21,7 @@ import {
 
 import Feedbacks from './pages/Feedbacks'
 import Login from './pages/Login'
+import Signup from './pages/Signup'
 import Setup from './pages/Setup'
 import UserDropdown from './components/UserDropdown'
 
@@ -31,7 +32,8 @@ const { SubMenu } = Menu;
 
 
 function PrivateRoute({ children, ...rest }: any) {
-  const { loading, error, data } = useQuery(USER, {})
+  const { loading, error, data } = useQuery(USER)
+  console.log({ data })
   return (
     <Route
       {...rest}
@@ -162,6 +164,9 @@ const BasicExample = () => {
       <Switch>
         <PublicRoute path="/login">
           <Login />
+        </PublicRoute>
+        <PublicRoute path="/signup">
+          <Signup />
         </PublicRoute>
 
         <PrivateRoute>
