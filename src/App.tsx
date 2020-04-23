@@ -121,7 +121,7 @@ const BasicExample = () => {
                 </Menu.Item>
               </Menu>
             </Sider>
-            <Layout className="site-layout">
+            <Layout className="site-layout" style={{height: '100vh'}}>
               <Header className="site-layout-background" style={{ padding: 0 }}>
                 <Row justify="space-between" align="middle">
                   {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
@@ -142,6 +142,7 @@ const BasicExample = () => {
                   margin: '24px 16px',
                   padding: 24,
                   minHeight: 280,
+                  overflow: 'auto'
                 }}
               >
                 <Route exact path="/">
