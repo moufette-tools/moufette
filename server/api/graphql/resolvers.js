@@ -37,7 +37,7 @@ const resolvers = {
             team: team._id
          });
 
-         const token = jwt.sign({ team: team._id }, process.env.JWT_SECRET, {
+         const token = jwt.sign({}, process.env.JWT_SECRET, {
             algorithm: 'HS256',
          })
          // console.log('token:', token)

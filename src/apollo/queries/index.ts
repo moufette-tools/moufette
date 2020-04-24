@@ -5,6 +5,8 @@ export const FEEDBACKS = gql`
     feedbacks {
       _id
       text
+      image
+      createdAt
     }
   }
 `;

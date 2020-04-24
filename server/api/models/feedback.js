@@ -9,6 +9,10 @@ const feedbackSchema = mongoose.Schema(
       type: String,
       default: '',
       required: true
+    },
+    image: {
+      type: String,
+      default: null,
     }
   },
   { timestamps: {} },

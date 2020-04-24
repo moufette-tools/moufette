@@ -1,5 +1,5 @@
 import React from 'react'
-import { List } from 'antd';
+import { List, Avatar } from 'antd';
 import { useQuery } from '@apollo/client';
 
 import { FEEDBACKS } from '../../apollo/queries'
@@ -18,8 +18,21 @@ const FeedbackList = () => {
          renderItem={(feedback: any) => (
             <List.Item
                key={feedback._id}
+               extra={
+                  feedback.image &&
+                  <img
+                     style={{ border: '1px dotted gray', maxHeight: 200, width: 'auto', maxWidth: 200 }}
+                     alt="screenshot"
+                     src={feedback.image}
+                  />
+               }
             >
-               <List.Item.Meta />
+
+               <List.Item.Meta
+                  avatar={<Avatar src={''} size="large"/>}
+                  title={<span>User ID</span>}
+                  description={new Date(feedback.createdAt).toISOString()}
+               />
                {feedback.text}
             </List.Item>
          )}
