@@ -49,9 +49,10 @@ app.use(cors()) // enable `cors` to set HTTP response header: Access-Control-All
 //   }),
 // );
 
+app.use(bodyParser({ limit: '5mb' }));
+
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 app.use(passport);
-
 const server = new ApolloServer({
   cors: false,
   typeDefs,
