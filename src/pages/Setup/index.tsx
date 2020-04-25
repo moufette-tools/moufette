@@ -6,14 +6,17 @@ const Setup = ({ currentUser }: any) => {
    const token = currentUser?.team?.token
 
    return (
-      <pre>
-         {`
+      <>
+         <p>To integrate Moufette, copy + paste the following snippet to your website. Ideally, put it just above the {"</head>"} tag.</p>
+         <pre>
+            {`
 <script>
    ${script}
    moufette.init("${token}", { api_host: "${url}" })
 </script>
          `}
-      </pre>
+         </pre>
+      </>
    )
 }
 
