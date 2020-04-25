@@ -13,7 +13,7 @@ It's a 1 click to deploy on your own infrastructure, with full API/DB access to 
    - username: `demo@moufette.com`
    - password: `123123`
 
-The widget was embedded in the dashboard itself but you can use it on any other website.
+The widget is embedded in the dashboard itself but you can use it on any other website.
 
 ## Quick start
 
