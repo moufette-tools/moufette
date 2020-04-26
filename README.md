@@ -16,7 +16,7 @@ It's a 1 click to deploy on your own infrastructure, with full API/DB access to 
 
 ## How does it work?
 
-Once you deploy Moufette, you will have your own dashboard and in the `Setup` page you will have auto generated `<script>` snippet that you can embed in any website (Your landing page 😉). Then you will have your embededd widget ready to collect feedbacks from your visitors & users.
+Moufette is an embedable JS widget with such and such back-end to collect user feedback with screenshots. Make it easeir for your users to help you build a better app.
 
 | Dashboard                                                                                      	| Wdiget                                                                                   	|
 |------------------------------------------------------------------------------------------------	|------------------------------------------------------------------------------------------	|
