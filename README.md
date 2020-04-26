@@ -20,7 +20,7 @@ Once you deploy Moufette, you will have your own dashboard and in the `Setup` pa
 
 | Dashboard                                                                                      	| Wdiget                                                                                   	|
 |------------------------------------------------------------------------------------------------	|------------------------------------------------------------------------------------------	|
-| <img src="https://moufette-public.s3.amazonaws.com/website-assets/dashboard-screenshot.png" width="70%"> 	| <img src="https://moufette-public.s3.amazonaws.com/website-assets/widget-screenshot.png" width="100%"> 	|
+| <div style="text-align:center"><img src="https://moufette-public.s3.amazonaws.com/website-assets/dashboard-screenshot.png" width="70%"></div> 	| <img src="https://moufette-public.s3.amazonaws.com/website-assets/widget-screenshot.png" width="100%"> 	|
 
 ## Quick start
 
