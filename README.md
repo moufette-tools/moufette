@@ -16,7 +16,7 @@ It's a 1 click to deploy on your own infrastructure, with full API/DB access to 
 
 ## How does it work?
 
-Moufette is an embedable JS widget with such and such back-end to collect user feedback with screenshots. Make it easeir for your users to help you build a better app.
+Moufette is an embedable JS widget with such and such back-end to collect user feedback with screenshots. Make it easier for your users to help you build a better app.
 
 | Dashboard                                                                                      	| Wdiget                                                                                   	|
 |------------------------------------------------------------------------------------------------	|------------------------------------------------------------------------------------------	|
