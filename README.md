@@ -1,11 +1,10 @@
-![Moufette header](https://moufette-public.s3.amazonaws.com/website-assets/cover.png)
+<img src="https://moufette-public.s3.amazonaws.com/website-assets/cover.png" width="100%">
 
 # Moufette (Community Edition)
 
-It's critical to get very early feedback when you start working on a new app. Moufette is an open-soruce, built for developers. To give a voice to your users so they can help you build, **persevere** or **pivot**!
+It's critical to get very early feedback when you start working on a new app. Moufette is an open-source, built for developers. To give a voice to your users so they can help you build, **persevere** or **pivot**!
 
 It's a 1 click to deploy on your own infrastructure, with full API/DB access to the underlying data.
-
 
 ## Demo
 
@@ -13,7 +12,15 @@ It's a 1 click to deploy on your own infrastructure, with full API/DB access to 
    - username: `demo@moufette.com`
    - password: `123123`
 
-The widget is embedded in the dashboard itself but you can use it on any other website.
+\* The widget is embedded in the dashboard itself but you can use it on any other website.
+
+## How does it work?
+
+Once you deploy Moufette, you will have your own dashboard and in the `Setup` page you will have auto generated `<script>` snippet that you can embed in any website (Your landing page 😉). Then you will have your embededd widget ready to collect feedbacks from your visitors & users.
+
+| Dashboard                                                                                      	| Wdiget                                                                                   	|
+|------------------------------------------------------------------------------------------------	|------------------------------------------------------------------------------------------	|
+| <img src="https://moufette-public.s3.amazonaws.com/website-assets/dashboard-screenshot.png" width="70%"> 	| <img src="https://moufette-public.s3.amazonaws.com/website-assets/widget-screenshot.png" width="100%"> 	|
 
 ## Quick start
 
@@ -35,21 +42,21 @@ Join our [Moufette Slack](https://join.slack.com/t/moufette/shared_invite/zt-dv3
 - [x] Super easy deploy using **Heroku**, and **Docker** coming soon.
 
 
-## In the making 
+## In the making
 - [ ] Customize widget from dashboard
 - [ ] Support **Docker**
-- [ ] Alow users to add comments/select area on the screenshot or attach certen element of the page
+- [ ] Allow users to add comments/select area on the screenshot or attach certain element of the page
 - [ ] Analytics
 - [ ] Live view and feedback session
-- [ ] Track vistors VS users
+- [ ] Track visitors VS users
 - [ ] Embeddable Survey
 
 
 ## Philosophy
 
-Many engineers find it painful to work out how their products are being used and struggle to get the critical early feedback they need to help them navigate the product development and prioritize a long list of features. Moufette is here to solves that.
+Many engineers find it painful to work out how their products are being used and struggle to get the critical early feedback they need to help them navigate the product development and prioritize a long list of features. Moufette is here to solve that.
 
-Moufette is **not** an anylitics tool replacement but rather a complementary. It's important to understand how users behaive on your website but in many cases you can't make any sence of thier random clicks and scrolling. So why not just ask them! People love to tell what they think or even criticise espically if they think your are wrong ([Cunningham's Law](https://meta.wikimedia.org/wiki/Cunningham%27s_Law)). And this is exactly what you need at this stage.
+Moufette is **not** an analytics tool replacement but rather a complementary. It's important to understand how users behave on your website but in many cases you can't make any sense of their random clicks and scrolling. So why not just ask them! People love to tell what they think or even criticise especially if they think you're wrong ([Cunningham's Law](https://meta.wikimedia.org/wiki/Cunningham%27s_Law)). And this is exactly what you need at this stage.
 
 We also strongly believe 3rd party tools don't work anymore in a world of Cookie laws, GDPR, CCPA and lots of other 4 letter acronyms. There should be an alternative to sending all of your users' personal information to 3rd parties. Moufette gives you full control over all your users' data.
 
