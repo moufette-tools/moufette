@@ -1,5 +1,6 @@
 import React from 'react'
 import { List, Avatar } from 'antd';
+import { UserOutlined} from '@ant-design/icons'
 import { useQuery } from '@apollo/client';
 
 import { FEEDBACKS } from '../../apollo/queries'
@@ -29,8 +30,8 @@ const FeedbackList = () => {
             >
 
                <List.Item.Meta
-                  avatar={<Avatar src={''} size="large"/>}
-                  title={<span>User ID</span>}
+                  // avatar={<Avatar src={''} size="large" />}
+                  title={<span><UserOutlined /> {feedback.person.uuid}</span>}
                   description={new Date(feedback.createdAt).toISOString()}
                />
                {feedback.text}

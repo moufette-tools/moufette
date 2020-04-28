@@ -7,6 +7,10 @@ export const FEEDBACKS = gql`
       text
       image
       createdAt
+      person {
+        _id
+        uuid
+      }
     }
   }
 `;

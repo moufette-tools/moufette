@@ -12,8 +12,8 @@ const teamSchema = mongoose.Schema(
       type: String,
       // required: true,
     },
-    members: {
-      type: [String],
+    team: {
+      type: String,
       required: true,
     },
     widgetConfig: {

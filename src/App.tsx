@@ -20,6 +20,8 @@ import {
 } from "react-router-dom";
 
 import Feedbacks from './pages/Feedbacks'
+import Features from './pages/Features'
+import WidgetConfig from './pages/WidgetConfig'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Setup from './pages/Setup'
@@ -107,6 +109,18 @@ const App = () => {
               <span>Feedbacks</span>
             </Link>
           </Menu.Item>
+          <Menu.Item key="/widget">
+            <Link to="/widget">
+              <SettingOutlined />
+              <span>Widget</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="/features">
+            <Link to="/features">
+              <SettingOutlined />
+              <span>Features</span>
+            </Link>
+          </Menu.Item>
           <Menu.Item key="/setup">
             <Link to="/setup">
               <SettingOutlined />
@@ -145,6 +159,14 @@ const App = () => {
 
           <Route path="/feedbacks">
             <Feedbacks />
+          </Route>
+
+          <Route path="/widget">
+            <WidgetConfig />
+          </Route>
+
+          <Route path="/features">
+            <Features />
           </Route>
 
           <Route path="/setup">

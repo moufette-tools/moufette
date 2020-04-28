@@ -13,7 +13,12 @@ const feedbackSchema = mongoose.Schema(
     image: {
       type: String,
       default: null,
+    },
+    person: {
+      type: String,
+      required: true
     }
+
   },
   { timestamps: {} },
 );

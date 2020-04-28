@@ -2,8 +2,21 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/user')
 const Team = require('../models/team')
 const FeedbackService = require('../services/FeedbackService')
+const UserService = require('../services/UserService')
+const FeatureService = require('../services/FeatureService')
+const PersonService = require('../services/PersonService')
 
 const resolvers = {
+   Feature: {
+      myVote(feature, args, ctx) {
+         return FeatureService.myVote(feature, ctx)
+      }
+   },
+   Feedback: {
+      person({ person }) {
+         return PersonService.findOneById(person)
+      }
+   },
    User: {
       team({ team }) {
          return Team.findOne({ _id: team })
@@ -12,8 +25,13 @@ const resolvers = {
    Query: {
       currentUser: (parent, args, context) => context.getUser(),
       feedbacks: (parent, args, context) => FeedbackService.findAll(),
+      widget: (parent, args, context) => UserService.getConfig(context),
+      features: (parent, args, context) => FeatureService.findFeatures(context),
    },
    Mutation: {
+      vote(_, args, ctx) {
+         return FeatureService.vote(args, ctx);
+      },
       feedback(_, args, ctx) {
          return FeedbackService.recordFeedback(args, ctx);
       },
@@ -54,6 +72,8 @@ const resolvers = {
          return { user }
       },
       logout: (parent, args, context) => context.logout(),
+      updateWidget: (parent, args, ctx) => UserService.updateWidget(args, ctx),
+      updateFeature: (parent, args, ctx) => FeatureService.updateFeature(args, ctx)
    },
 };
 

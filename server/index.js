@@ -21,6 +21,7 @@ const typeDefs = require('./api/graphql/typeDefs')
 const resolvers = require('./api/graphql/resolvers')
 const AuhtDirective = require('./api/graphql/AuthDirective')
 const TokenDirective = require('./api/graphql/TokenDirective')
+const TokenOrAuthDirective = require('./api/graphql/TokenOrAuthDirective')
 const isDev = process.env.NODE_ENV !== 'production';
 
 const ngrok =
@@ -59,7 +60,8 @@ const server = new ApolloServer({
   resolvers,
   schemaDirectives: {
     auth: AuhtDirective,
-    token: TokenDirective
+    token: TokenDirective,
+    tokenOrAuth: TokenOrAuthDirective
   },
   context: ({ req, res }) => buildContext({ req, res }),
   playground: {

@@ -1,7 +1,13 @@
+const { get, pick } = require('lodash');
+const Person = require('../models/person');
 const Feedback = require('../models/feedback');
 
-const recordFeedback = async ({ message, image }, { user }) => {
+const recordFeedback = async ({ message, image }, { user, req }) => {
+  const uuid = get(req, 'headers.mf_uuid')
+  const person = await Person.findOneAndUpdate({ uuid }, {}, { upsert: true, new: true })
+
   const feed = Feedback.create({
+    person: person._id,
     from: user && user._id,
     text: message,
     image
