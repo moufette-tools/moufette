@@ -206,6 +206,12 @@ function Home() {
   return (
     <div>
       <h2>Welcome to Moufette</h2>
+      <h1>Steps</h1>
+      <p>1. Go to <Link to="/widget">wdiget</Link> and choose your primary color and the app name to display for your visitors</p>
+      <p>2. Add some <Link to="/features">features</Link> that your visitor can vote for</p>
+      <p>3. Finally copy the JS snippet from <Link to="/setup">setup</Link> and add it to your site to activte the widget</p>
+      <p>4. Get some cool <Link to="/feedbacks">feedbacks</Link>!</p>
+
     </div>
   );
 }
