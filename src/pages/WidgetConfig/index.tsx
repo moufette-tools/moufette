@@ -29,13 +29,24 @@ const WidgetConfig = () => {
 
    useEffect(() => {
       if (data) {
-         form.setFieldsValue(data.widget)
+         form.setFieldsValue({ ...data.widget, ...data.widget.theme.colors })
       }
    }, [loading])
 
 
    const onFinish = (values: any) => {
-      updateWidget({ variables: { config: values } })
+      updateWidget({
+         variables: {
+            config: {
+               appName: values.appName,
+               theme: {
+                  colors: {
+                     primary: values.primary
+                  }
+               }
+            }
+         }
+      })
    }
 
    return (
@@ -44,6 +55,18 @@ const WidgetConfig = () => {
          <Form.Item
             name="appName"
             label="App Name"
+            rules={[
+               {
+                  required: true,
+               },
+            ]}
+         >
+            <Input />
+         </Form.Item>
+
+         <Form.Item
+            name="primary"
+            label="Primary Color"
             rules={[
                {
                   required: true,

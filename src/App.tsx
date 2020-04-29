@@ -5,7 +5,9 @@ import {
   MessageOutlined,
   HomeOutlined,
   MenuUnfoldOutlined,
-  MenuFoldOutlined
+  MenuFoldOutlined,
+  BugOutlined,
+  RocketOutlined
 } from '@ant-design/icons';
 import styled from 'styled-components'
 import { useQuery, useMutation } from '@apollo/client';
@@ -111,13 +113,13 @@ const App = () => {
           </Menu.Item>
           <Menu.Item key="/widget">
             <Link to="/widget">
-              <SettingOutlined />
+              <RocketOutlined />
               <span>Widget</span>
             </Link>
           </Menu.Item>
           <Menu.Item key="/features">
             <Link to="/features">
-              <SettingOutlined />
+              <BugOutlined />
               <span>Features</span>
             </Link>
           </Menu.Item>
