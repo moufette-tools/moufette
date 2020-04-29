@@ -7,6 +7,9 @@ const personSchema = mongoose.Schema(
       required: true,
       unique: true,
     },
+    email: {
+      type: String
+    }
   },
   { timestamps: {} },
 );

@@ -64,7 +64,7 @@ const typeDefs = gql`
   type Mutation {
 
     # feedback
-    feedback(message: String!, image: String): Boolean! @token
+    feedback(message: String!, image: String, email: String): Boolean! @token
 
     # user
     signup(companyName: String!, firstName: String!, lastName: String!, email: String!, password: String!): AuthPayload

@@ -7,7 +7,7 @@ const Setup = ({ currentUser }: any) => {
 
    return (
       <>
-         <p>To integrate Moufette, copy + paste the following snippet to your website. Ideally, put it just above the {"</body>"} tag.</p>
+         <p>To integrate Moufette, copy + paste the following snippet to your website. Ideally, put it just above the <strong>{"</head>"}</strong> tag.</p>
          <pre>
             {`
 <script>

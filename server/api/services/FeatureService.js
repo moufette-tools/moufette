@@ -50,7 +50,7 @@ const vote = async ({ voting, feature: _id }, { req }) => {
 
 const myVote = async (feature, { req }) => {
   const uuid = get(req, 'headers.mf_uuid')
-  const person = await Person.findOne({ uuid })
+  const person = await Person.findOneAndUpdate({ uuid }, {}, { upsert: true, new: true })
 
   return feature.votes.find(v => v.person === person._id.toString())
 
