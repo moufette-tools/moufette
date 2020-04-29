@@ -10,7 +10,7 @@ It's a 1 click to deploy on your own infrastructure, with full API/DB access to 
 
 Moufette is an embedable JS widget with such back-end to collect user feedback with screenshots. It also allows your users to vote on upcomoing features. Moufette makes it easier for your users to help you build a better app.
 
-<div style="text-align: center">
+<div style="text-align:center">
 <img src="https://moufette-public.s3.amazonaws.com/website-assets/widget.gif" width="250px">
 </div>
 
