@@ -18,7 +18,13 @@ const teamSchema = mongoose.Schema(
     },
     widgetConfig: {
       type: JSON,
-      default: {}
+      default: {
+        theme: {
+          colors: {
+            primary: '#1890ff'
+          }
+        }
+      }
     }
   },
   { timestamps: {} },

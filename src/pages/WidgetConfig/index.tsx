@@ -29,7 +29,7 @@ const WidgetConfig = () => {
 
    useEffect(() => {
       if (data) {
-         form.setFieldsValue({ ...data.widget, ...data.widget.theme.colors })
+         form.setFieldsValue({ ...data?.widget, ...data?.widget?.theme?.colors })
       }
    }, [loading])
 
