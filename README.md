@@ -4,8 +4,6 @@
 
 It's critical to get very early feedback when you start working on a new app. Moufette is an open-source, built for developers. To give a voice to your users so they can help you build, **persevere** or **pivot**!
 
-It's a 1 click to deploy on your own infrastructure, with full API/DB access to the underlying data.
-
 ## How does it work?
 
 Moufette is an embedable JS widget with such back-end to collect user feedback with screenshots. It also allows your users to vote on upcomoing features. Moufette makes it easier for your users to help you build a better app.
