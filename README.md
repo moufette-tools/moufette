@@ -1,4 +1,4 @@
-<img src="https://moufette-public.s3.amazonaws.com/website-assets/cover.png" width="100%">
+<!-- <img src="https://moufette-public.s3.amazonaws.com/website-assets/cover.png" width="100%"> -->
 
 # Moufette (Community Edition)
 
@@ -6,27 +6,13 @@ It's critical to get very early feedback when you start working on a new app. Mo
 
 It's a 1 click to deploy on your own infrastructure, with full API/DB access to the underlying data.
 
-## Demo
-
-[Moufette Dashboard](https://moufette-demo.herokuapp.com/)
-   - username: `demo@moufette.com`
-   - password: `123123`
-
-\* The widget is embedded in the dashboard itself but you can use it on any other website.
-
 ## How does it work?
 
-Moufette is an embedable JS widget with such and such back-end to collect user feedback with screenshots. Make it easier for your users to help you build a better app.
+Moufette is an embedable JS widget with such back-end to collect user feedback with screenshots. It also allows your users to vote on upcomoing features. Moufette makes it easier for your users to help you build a better app.
 
-| Dashboard                                                                                      	| Wdiget                                                                                   	|
-|------------------------------------------------------------------------------------------------	|------------------------------------------------------------------------------------------	|
-| <div style="text-align:center"><img src="https://moufette-public.s3.amazonaws.com/website-assets/dashboard-screenshot.png" width="70%"></div> 	| <img src="https://moufette-public.s3.amazonaws.com/website-assets/widget-screenshot.png" width="100%"> 	|
-
-## Quick start
-
-1 click Heroku deploy:
-
-<a href="https://heroku.com/deploy?template=https://github.com/moufette-tools/moufette"><img src="https://www.herokucdn.com/deploy/button.svg" width="250px" /></a>
+<div style="text-align: center">
+<img src="https://moufette-public.s3.amazonaws.com/website-assets/widget.gif" width="250px">
+</div>
 
 ## Join us
 
@@ -38,8 +24,8 @@ Join our [Moufette Slack](https://join.slack.com/t/moufette/shared_invite/zt-dv3
 - [x] **Lightweight embeddable widget** built with React and highly customizable.
 - [x] **Super Easy to integrate** into any website with a tiny js snippet. 
 - [x] **Clean & simple Dashboard** to review feedback with screenshots from your users.
-
 - [x] Super easy deploy using **Heroku**, and **Docker** coming soon.
+- [x] Visitors vote for upcomoing features.
 
 
 ## In the making
