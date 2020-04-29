@@ -14,6 +14,13 @@ Moufette is an embedable JS widget with such back-end to collect user feedback w
 <img src="https://moufette-public.s3.amazonaws.com/website-assets/widget.gif" width="250px">
 </p>
 
+## Quick start
+
+1 click Heroku deploy:
+
+<a href="https://heroku.com/deploy?template=https://github.com/moufette-tools/moufette"><img src="https://www.herokucdn.com/deploy/button.svg" width="250px" /></a>
+
+
 ## Join us
 
 Join our [Moufette Slack](https://join.slack.com/t/moufette/shared_invite/zt-dv3xmgo3-lX1ssk~nifGrhUtH7OFDFA) if you need help, want to chat, or are thinking of a new feature idea.
