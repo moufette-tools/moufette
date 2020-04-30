@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Form, Input, Button, Checkbox, Row, Col } from 'antd';
 import { useQuery, useMutation } from '@apollo/client';
 import {
@@ -93,9 +94,13 @@ const Demo = () => {
             <Form.Item {...tailLayout}>
                <Button type="primary" htmlType="submit">
                   Submit
-        </Button>
+               </Button>
+            </Form.Item>
+            <Form.Item {...tailLayout}>
+               <Link to="/signup">Sign up</Link>
             </Form.Item>
          </Form>
+
       </Row>
    );
 };
