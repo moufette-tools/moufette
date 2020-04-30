@@ -6,7 +6,11 @@ It's critical to get very early feedback when you start working on a new app. Mo
 
 ## How does it work?
 
-Moufette is an embedable JS widget with such back-end to collect user feedback with screenshots. It also allows your users to vote on upcomoing features. Moufette makes it easier for your users to help you build a better app.
+Moufette is built of 2 parts:
+1. Embedable JS widget, to collect user feedback with screenshots, also allows your users to vote on upcomoing features
+2. Dashboard to control the widget, custumize it and review feedbacks and votes.
+
+After you deploy Moufette to heroku. it will auto-generate the widget snippet code for you, to embed in your web app. Moufette makes it easier for your users to help you build a better app.
 
 <p align="center">
 <img src="https://moufette-public.s3.amazonaws.com/website-assets/widget.gif" width="250px">
