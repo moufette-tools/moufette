@@ -49,15 +49,13 @@ Join our [Moufette Slack](https://join.slack.com/t/moufette/shared_invite/zt-dv3
 
 ## Philosophy
 
-Many engineers find it painful to work out how their products are being used and struggle to get the critical early feedback they need to help them navigate the product development and prioritize a long list of features. Moufette is here to solve that.
+Many engineers struggle to get the critical early feedback they need to help them navigate the product development and prioritize a long list of features. Moufette is here to solve that.
 
 Moufette is **not** an analytics tool replacement but rather a complementary. It's important to understand how users behave on your website but in many cases you can't make any sense of their random clicks and scrolling. So why not just ask them! People love to tell what they think or even criticise especially if they think you're wrong ([Cunningham's Law](https://meta.wikimedia.org/wiki/Cunningham%27s_Law)). And this is exactly what you need at this stage.
 
-We also strongly believe 3rd party tools don't work anymore in a world of Cookie laws, GDPR, CCPA and lots of other 4 letter acronyms. There should be an alternative to sending all of your users' personal information to 3rd parties. Moufette gives you full control over all your users' data.
-
 ## Open source / Paid
 
-This repo is [MIT licensed](/LICENSE). In the near future will have a paid plan for things like user permissioning and auditability, a/b testing and dedicated support. Please reach out for more details.
+This repo is [MIT licensed](/LICENSE). Some time in the future will have a paid plan for things like a/b testing and dedicated support. Please reach out for more details.
 
 ## Contributors
 [//]: contributor-faces
