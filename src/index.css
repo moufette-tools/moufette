@@ -43,3 +43,14 @@ code {
 .site-layout .site-layout-background {
   background: #fff;
 }
+
+.browser-frame {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.browser-frame__body {
+  flex: 1;
+    background-color: antiquewhite;
+}

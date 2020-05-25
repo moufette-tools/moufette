@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Layout, Menu, Dropdown, Row } from 'antd';
 import {
   SettingOutlined,
@@ -32,7 +32,6 @@ import UserDropdown from './components/UserDropdown'
 import { USER } from './apollo/queries'
 
 const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
 
 
 function PrivateRoute({ children, ...rest }: any) {
@@ -98,31 +97,40 @@ const App = () => {
         <div className="logo">
           {collapsed ? <span style={{ fontSize: 'x-large' }}>🦨</span> : 'Moufette v0.1'}
         </div>
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['/']} selectedKeys={[location.pathname]}>
+        <Menu theme="dark" mode="inline" defaultOpenKeys={['widget', 'widget-tabs']} defaultSelectedKeys={['/']} selectedKeys={[location.pathname]}>
           <Menu.Item key="/">
             <Link to="/">
               <HomeOutlined />
               <span>Home</span>
             </Link>
           </Menu.Item>
-          <Menu.Item key="/feedbacks">
-            <Link to="/feedbacks">
-              <MessageOutlined />
-              <span>Feedbacks</span>
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="/widget">
-            <Link to="/widget">
-              <RocketOutlined />
-              <span>Widget</span>
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="/features">
-            <Link to="/features">
-              <BugOutlined />
-              <span>Features</span>
-            </Link>
-          </Menu.Item>
+
+
+          <Menu.SubMenu key="widget" icon={<RocketOutlined />} title="Widget">
+
+            <Menu.Item key="/widget/settings">
+              <Link to="/widget/settings">
+                <span>Settings</span>
+              </Link>
+            </Menu.Item>
+
+
+            <Menu.Item key="/widget/feedbacks">
+              <Link to="/widget/feedbacks">
+
+                <span>Feedbacks</span>
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="/widget/features">
+              <Link to="/widget/features">
+
+                <span>Features</span>
+              </Link>
+            </Menu.Item>
+          </Menu.SubMenu>
+
+
+
           <Menu.Item key="/setup">
             <Link to="/setup">
               <SettingOutlined />
@@ -159,15 +167,15 @@ const App = () => {
             <Home />
           </Route>
 
-          <Route path="/feedbacks">
+          <Route path="/widget/settings">
+            <WidgetConfig currentUser={data?.currentUser} />
+          </Route>
+
+          <Route path="/widget/feedbacks">
             <Feedbacks />
           </Route>
 
-          <Route path="/widget">
-            <WidgetConfig />
-          </Route>
-
-          <Route path="/features">
+          <Route path="/widget/features">
             <Features />
           </Route>
 

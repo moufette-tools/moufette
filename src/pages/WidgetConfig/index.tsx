@@ -1,87 +1,164 @@
-import React, { useEffect } from 'react'
-import { Form, Input, Button, Select } from 'antd';
+import React, { useEffect, useState } from 'react'
+import { Form, Input, Button, Select, Divider, Switch, Row, Col, Radio, message } from 'antd';
 import { useMutation, useQuery } from '@apollo/client';
+import BrowserFrame from "react-browser-frame";
+import { TwitterPicker } from 'react-color';
+
+import Widget from 'moufette-widget/src/App'
 
 import { UPDATE_WIDGET } from './mutation'
 import { WIDGET } from './query'
 
-const { Option } = Select;
 const layout = {
    labelCol: {
-      span: 4,
+      span: 8,
    },
    wrapperCol: {
-      span: 20,
+      span: 16,
    },
+
 };
 const tailLayout = {
    wrapperCol: {
-      offset: 4,
-      span: 20,
+      offset: 8,
+      span: 12,
    },
 };
 
-const WidgetConfig = () => {
+const WidgetConfig = ({ currentUser }: any) => {
    const [form] = Form.useForm();
 
+   const [dirty, setDirty] = useState(false)
+   const [config, setConfig] = useState(null)
    const [updateWidget] = useMutation(UPDATE_WIDGET)
    const { loading, error, data } = useQuery(WIDGET, {})
 
    useEffect(() => {
       if (data) {
-         form.setFieldsValue({ ...data?.widget, ...data?.widget?.theme?.colors })
+         // console.log({ data })
+         setConfig({ ...data?.widget })
+         form.setFieldsValue({ ...data?.widget })
       }
    }, [loading])
 
-
    const onFinish = (values: any) => {
+      // console.log(values)
       updateWidget({
          variables: {
-            config: {
-               appName: values.appName,
-               theme: {
-                  colors: {
-                     primary: values.primary
-                  }
-               }
-            }
+            config: values
          }
+      }).then(() => {
+         message.success('Your awesome widget is ready!');
+         setDirty(false)
       })
    }
 
    return (
-      <Form {...layout} form={form} onFinish={onFinish}>
+      <Row style={{ height: '100%' }}>
+         <Col span={12}>
+            <Form {...layout} labelAlign="left" form={form} onFinish={onFinish}
+               onValuesChange={(v, vv) => {
+                  setDirty(true)
+                  setConfig(vv as any)
+               }}>
+               <Form.Item
+                  name="header"
+                  label="Header"
+                  rules={[
+                     {
+                        required: true,
+                     },
+                  ]}
+               >
+                  <Input />
+               </Form.Item>
 
-         <Form.Item
-            name="appName"
-            label="App Name"
-            rules={[
+               <Divider orientation="left">
+                  Style
+               </Divider>
+
+               <Form.Item
+                  name={["theme", "colors", "primary"]}
+                  label="Primary Color"
+                  getValueFromEvent={e => e.hex}
+                  valuePropName="color"
+                  rules={[
+                     {
+                        required: true,
+                     },
+                  ]}
+               >
+                  {/* <Input /> */}
+                  <TwitterPicker triangle="hide" />
+               </Form.Item>
+
+               <Form.Item
+                  name={["mode", "style"]}
+                  label="Mode"
+                  valuePropName="value"
+                  rules={[
+                     {
+                        required: true,
+                     },
+                  ]}
+               >
+                  <Radio.Group>
+                     <Radio.Button value="fab">Floating</Radio.Button>
+                     <Radio.Button value="tab">Tab</Radio.Button>
+                  </Radio.Group>
+               </Form.Item>
+
+               <Form.Item
+                  noStyle
+                  shouldUpdate={(prevValues, currentValues) => prevValues.mode?.style !== currentValues.mode?.style}
+               >
+                  {({ getFieldValue }) => {
+                     return getFieldValue('mode')?.style === 'tab' ? (
+                        <Form.Item
+                           name={["mode", "text"]}
+                           label="Text"
+                           rules={[
+                              {
+                                 required: true,
+                              },
+                           ]}
+                        >
+                           <Input />
+                        </Form.Item>
+                     ) : null;
+                  }}
+               </Form.Item>
+
+               <Divider orientation="left">
+                  Tabs
+               </Divider>
+
+               <Form.Item valuePropName="checked" name={["tabs", "feedback"]} label="Feedback">
+                  <Switch />
+               </Form.Item>
+               <Form.Item valuePropName="checked" name={["tabs", "features"]} label="Features">
+                  <Switch />
+               </Form.Item>
+
+               <Divider />
+
+               <Form.Item {...tailLayout}>
+                  <Button disabled={!dirty} type="primary" htmlType="submit">
+                     Save
+                  </Button>
+               </Form.Item>
+            </Form>
+         </Col>
+         <Col offset={1} span={11} style={{ display: 'flex' }}>
+            <BrowserFrame url="https://yourAwsomeWebsite.com">
                {
-                  required: true,
-               },
-            ]}
-         >
-            <Input />
-         </Form.Item>
+                  !!config &&
+                  <Widget config={config} />
+               }
+            </BrowserFrame>
+         </Col>
+      </Row>
 
-         <Form.Item
-            name="primary"
-            label="Primary Color"
-            rules={[
-               {
-                  required: true,
-               },
-            ]}
-         >
-            <Input />
-         </Form.Item>
-
-         <Form.Item {...tailLayout}>
-            <Button type="primary" htmlType="submit">
-               Save
-             </Button>
-         </Form.Item>
-      </Form>
    );
 };
 

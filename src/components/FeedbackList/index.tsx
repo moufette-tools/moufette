@@ -44,6 +44,7 @@ const FeedbackList = () => {
             dataSource={data.feedbacks}
             renderItem={(feedback: any) => (
                <List.Item
+                  style={{ paddingLeft: 0 }}
                   key={feedback._id}
                   extra={
                      feedback.image &&

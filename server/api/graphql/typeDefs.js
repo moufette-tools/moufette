@@ -64,7 +64,7 @@ const typeDefs = gql`
   type Mutation {
 
     # feedback
-    feedback(message: String!, image: String, email: String): Boolean! @token
+    feedback(message: String!, image: String, email: String): Boolean! @tokenOrAuth
 
     # user
     signup(companyName: String!, firstName: String!, lastName: String!, email: String!, password: String!): AuthPayload
@@ -73,7 +73,7 @@ const typeDefs = gql`
 
     # widget
     updateWidget(config: JSON!): JSON! @auth
-    vote(voting: Int!, feature: String!): Feature! @token
+    vote(voting: Int!, feature: String!): Feature! @tokenOrAuth
 
     updateFeature(feature: FeatureInput!): Feature!
 

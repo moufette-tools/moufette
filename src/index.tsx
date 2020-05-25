@@ -21,13 +21,13 @@ const store = configureStore();
 
 const render = (Component: any) => {
   return ReactDOM.render(
-    <React.StrictMode>
+    // <React.StrictMode>
       <ApolloProvider client={client}>
         <Provider store={store}>
           <Component />
         </Provider>
-      </ApolloProvider>
-    </React.StrictMode>,
+      </ApolloProvider>,
+    // </React.StrictMode>,
     document.getElementById('root')
   );
 };
