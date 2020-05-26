@@ -27,6 +27,7 @@ import WidgetConfig from './pages/WidgetConfig'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Setup from './pages/Setup'
+import Integrations from './pages/Integrations'
 import UserDropdown from './components/UserDropdown'
 
 import { USER } from './apollo/queries'
@@ -137,8 +138,15 @@ const App = () => {
               <span>Setup</span>
             </Link>
           </Menu.Item>
+          <Menu.Item key="/integrations">
+            <Link to="/integrations">
+              <SettingOutlined />
+              <span>Integrations</span>
+            </Link>
+          </Menu.Item>
         </Menu>
       </Sider>
+
       <Layout className="site-layout" style={{ height: '100vh' }}>
         <Header className="site-layout-background" style={{ padding: 0 }}>
           <Row justify="space-between" align="middle">
@@ -181,6 +189,10 @@ const App = () => {
 
           <Route path="/setup">
             <Setup currentUser={data?.currentUser} />
+          </Route>
+
+          <Route path="/integrations">
+            <Integrations currentUser={data?.currentUser} />
           </Route>
         </Content>
       </Layout>

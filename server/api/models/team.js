@@ -16,6 +16,9 @@ const teamSchema = mongoose.Schema(
       type: [String],
       required: true,
     },
+    integrations: {
+      type: JSON,
+    },
     widgetConfig: {
       type: JSON,
       default: {

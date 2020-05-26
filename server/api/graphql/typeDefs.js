@@ -77,6 +77,10 @@ const typeDefs = gql`
 
     updateFeature(feature: FeatureInput!): Feature!
 
+    # integratinos
+
+    connectSlack(code: String!): Boolean
+
 
   }
   

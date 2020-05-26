@@ -73,7 +73,10 @@ const resolvers = {
       },
       logout: (parent, args, context) => context.logout(),
       updateWidget: (parent, args, ctx) => UserService.updateWidget(args, ctx),
-      updateFeature: (parent, args, ctx) => FeatureService.updateFeature(args, ctx)
+      updateFeature: (parent, args, ctx) => FeatureService.updateFeature(args, ctx),
+
+      // integratinos
+      connectSlack: (parent, args, ctx) => UserService.connectSlack(args, ctx),
    },
 };
 
