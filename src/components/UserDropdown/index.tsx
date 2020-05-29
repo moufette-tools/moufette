@@ -3,6 +3,7 @@ import { Layout, Menu, Dropdown, Row } from 'antd';
 import { useQuery, useMutation } from '@apollo/client';
 import {
    useHistory,
+   Link
 } from "react-router-dom";
 
 import { LOGOUT } from '../../apollo/mutations'
@@ -16,6 +17,11 @@ const UserDropdown = ({ currentUser }: any) => {
 
    const menu = (
       <Menu>
+         <Menu.Item key="1">
+            <Link to="/account">
+               <span>Account</span>
+            </Link>
+         </Menu.Item>
          <Menu.Item key="0" onClick={() => {
             logout().then(() => {
                history.replace('/login');

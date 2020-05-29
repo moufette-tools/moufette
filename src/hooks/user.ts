@@ -9,9 +9,20 @@ const FORGOT_PASSWORD = gql`
  }
 `;
 
+const RESET_PASSWORD = gql`
+ mutation resetPassword($password: String!) {
+   resetPassword(password: $password) 
+ }
+`;
+
 
 export const useForgotPassword = () => {
    return useMutation(FORGOT_PASSWORD, {
+   })
+}
+
+export const useResetPassword = () => {
+   return useMutation(RESET_PASSWORD, {
    })
 }
 

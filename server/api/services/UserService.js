@@ -37,6 +37,21 @@ const forgotPassword = async ({ email }, ctx) => {
   return !!info.messageId
 };
 
+const resetPassword = async ({ password }, ctx) => {
+  const u = await ctx.getUser()
+  const user = await User.findOne({ email: u.email })
+
+  if (!user) { 
+    throw new Error('user doesnt exist')
+  }
+
+  // TODO
+  user.password = password
+  await user.save()
+
+  return true
+};
+
 const getConfig = async (ctx) => {
   const user = await ctx.getUser()
   let team
@@ -78,6 +93,7 @@ const connectSlack = async ({ code }, ctx) => {
 
 
 module.exports = {
+  resetPassword,
   findUserById,
   getConfig,
   updateWidget,

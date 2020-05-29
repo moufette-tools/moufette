@@ -70,6 +70,7 @@ const typeDefs = gql`
     signup(companyName: String!, firstName: String!, lastName: String!, email: String!, password: String!): AuthPayload
     login(email: String!, password: String!): AuthPayload
     forgotPassword(email: String!): Boolean
+    resetPassword(password: String!): Boolean
     logout: Boolean @auth
 
     # widget

@@ -74,6 +74,9 @@ const resolvers = {
       forgotPassword: async (_, args, ctx) => {
          return UserService.forgotPassword(args, ctx)
       },
+      resetPassword: async (_, args, ctx) => {
+         return UserService.resetPassword(args, ctx)
+      },
       logout: (parent, args, context) => context.logout(),
       updateWidget: (parent, args, ctx) => UserService.updateWidget(args, ctx),
       updateFeature: (parent, args, ctx) => FeatureService.updateFeature(args, ctx),

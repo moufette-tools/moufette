@@ -28,6 +28,7 @@ import Login from './pages/Login'
 import ForgotPassword from './pages/ForgotPassword'
 import Signup from './pages/Signup'
 import Setup from './pages/Setup'
+import Account from './pages/Account'
 import Integrations from './pages/Integrations'
 import UserDropdown from './components/UserDropdown'
 
@@ -194,6 +195,10 @@ const App = () => {
 
           <Route path="/integrations">
             <Integrations currentUser={data?.currentUser} />
+          </Route>
+
+          <Route path="/account">
+            <Account currentUser={data?.currentUser} />
           </Route>
         </Content>
       </Layout>
