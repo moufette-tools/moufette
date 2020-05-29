@@ -25,6 +25,7 @@ import Feedbacks from './pages/Feedbacks'
 import Features from './pages/Features'
 import WidgetConfig from './pages/WidgetConfig'
 import Login from './pages/Login'
+import ForgotPassword from './pages/ForgotPassword'
 import Signup from './pages/Signup'
 import Setup from './pages/Setup'
 import Integrations from './pages/Integrations'
@@ -212,7 +213,9 @@ const BasicExample = () => {
         <PublicRoute path="/signup">
           <Signup />
         </PublicRoute>
-
+        <PublicRoute path="/forgot-password">
+          <ForgotPassword />
+        </PublicRoute>
         <PrivateRoute>
           <App />
         </PrivateRoute>

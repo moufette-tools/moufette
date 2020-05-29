@@ -69,6 +69,7 @@ const typeDefs = gql`
     # user
     signup(companyName: String!, firstName: String!, lastName: String!, email: String!, password: String!): AuthPayload
     login(email: String!, password: String!): AuthPayload
+    forgotPassword(email: String!): Boolean
     logout: Boolean @auth
 
     # widget
@@ -78,7 +79,6 @@ const typeDefs = gql`
     updateFeature(feature: FeatureInput!): Feature!
 
     # integratinos
-
     connectSlack(code: String!): Boolean
 
 

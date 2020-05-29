@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Form, Input, Button, Checkbox, Row, Col } from 'antd';
 import { useQuery, useMutation } from '@apollo/client';
@@ -8,9 +8,8 @@ import {
 } from "react-router-dom";
 
 import styled from 'styled-components/macro'
+import { useForgotPassword } from '../../hooks/user'
 
-import { LOGIN } from './mutation'
-import { USER } from '../../apollo/queries'
 
 const layout = {
    labelCol: { span: 8 },
@@ -26,23 +25,14 @@ const tailLayout = {
 
 const Demo = () => {
 
-   const [login] = useMutation(LOGIN);
-   let history = useHistory();
-   let location = useLocation();
+   const [forgotPassword] = useForgotPassword()
+   const [isSent, setIsSent] = useState(false)
 
-   const onFinish = (values: any) => {
-      console.log('Success:', values);
-      login({
-         variables: values,
-         update(cache, { data: { login } }) {
-            cache.writeQuery({
-               query: USER,
-               data: { currentUser: login.user },
-            });
-         }
+   const onFinish = ({ email }: any) => {
+      forgotPassword({
+         variables: { email },
       }).then(() => {
-         let { from } = location.state || { from: { pathname: "/" } } as any;
-         history.replace(from);
+         setIsSent(true)
       }).catch(console.log)
    };
 
@@ -50,14 +40,12 @@ const Demo = () => {
       console.log('Failed:', errorInfo);
    };
 
+
    return (
       <Row justify="center" align="middle" css={`height: 100%`}>
          <Form
             {...layout}
             name="basic"
-            initialValues={{
-               remember: true,
-            }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
          >
@@ -74,33 +62,20 @@ const Demo = () => {
                <Input />
             </Form.Item>
 
-            <Form.Item
-               label="Password"
-               name="password"
-               rules={[
-                  {
-                     required: true,
-                     message: 'Please input your password!',
-                  },
-               ]}
-            >
-               <Input.Password />
-            </Form.Item>
-
-            <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-               <Checkbox>Remember me</Checkbox>
-            </Form.Item>
+            {
+               isSent && <Form.Item {...tailLayout}>
+                  Check you inbox
+               </Form.Item>
+            }
 
             <Form.Item {...tailLayout}>
                <Button type="primary" htmlType="submit">
-                  Submit
+                  Send
                </Button>
             </Form.Item>
+
             <Form.Item {...tailLayout}>
-               <Link to="/forgot-password">Forgot password?</Link>
-            </Form.Item>
-            <Form.Item {...tailLayout}>
-               <Link to="/signup">Sign up</Link>
+               <Link to="/login">Login</Link>
             </Form.Item>
          </Form>
 

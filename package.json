@@ -44,6 +44,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.9",
     "moufette-widget": "https://github.com/moufette-tools/moufette-widget.git",
+    "nodemailer": "^6.4.6",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "raw-loader": "^4.0.1",
