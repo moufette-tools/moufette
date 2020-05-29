@@ -37,6 +37,12 @@ const resolvers = {
       },
       signup: async (parent, { companyName, firstName, lastName, email, password }, context) => {
          // const existingUsers = context.User.getUsers();
+
+         // TODO how to block other sign ups
+         if (process.env.MULTIPLE_TEAMS !== "true" && !!(await User.findOne())) {
+            throw new Error("An admin already exists. Please contact them")
+         }
+
          const userWithEmailAlreadyExists = !!(await User.findOne({ email }))
 
          if (userWithEmailAlreadyExists) {
