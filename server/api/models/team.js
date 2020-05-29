@@ -20,13 +20,32 @@ const teamSchema = mongoose.Schema(
       type: JSON,
     },
     widgetConfig: {
-      type: JSON,
-      default: {
-        theme: {
-          colors: {
-            primary: '#1890ff'
+      header: {
+        type: String,
+        default: 'Help us improve Moufette'
+      },
+      theme: {
+        colors: {
+          primary: {
+            type: String,
+            default: '#1890ff'
           }
         }
+      },
+      mode: {
+        style: {
+          type: String,
+          enum: ['fab', 'tab'],
+          default: 'fab'
+        },
+        text: {
+          type: String,
+          default: 'We Love Feedback'
+        }
+      },
+      tabs: {
+        feedback: { type: Boolean, default: true },
+        features: { type: Boolean, default: true },
       }
     }
   },
