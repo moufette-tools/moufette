@@ -24,6 +24,7 @@ export const USER = gql`
         _id
         name
         token
+        integrations
       }
     }
   }

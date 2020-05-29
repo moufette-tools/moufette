@@ -29,10 +29,10 @@ const Integrations = ({ currentUser }: any) => {
          setSlackLoading(true)
          connectSlack({ variables: { code } }).then(() => {
             setSlackLoading(false)
-            history.replace(history.location.pathname)  
+            history.replace(history.location.pathname)
          }).catch(() => {
             setSlackLoading(false)
-            history.replace(history.location.pathname)  
+            history.replace(history.location.pathname)
          })
          // connect slack
       }
@@ -40,6 +40,9 @@ const Integrations = ({ currentUser }: any) => {
 
 
    const renderSlackButton = () => {
+      if (currentUser.team.integrations.slack) {
+         return (<div>connected</div>)
+      }
       if (slackLoadnig) {
          return (
             <div>loading</div>

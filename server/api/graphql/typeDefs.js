@@ -36,6 +36,7 @@ const typeDefs = gql`
     _id: ID!
     name: String!
     token: String!
+    integrations: JSON
   }
 
   type Feature {

@@ -22,6 +22,13 @@ const resolvers = {
          return Team.findOne({ _id: team })
       }
    },
+   Team: {
+      integrations({ integrations }) {
+         const filtered = { ...integrations }
+         Object.keys(filtered).forEach(k => filtered[k] = true)
+         return filtered
+      }
+   },
    Query: {
       currentUser: (parent, args, context) => context.getUser(),
       feedbacks: (parent, args, context) => FeedbackService.findAll(),
