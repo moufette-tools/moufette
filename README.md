@@ -10,7 +10,6 @@ Moufette is built of 2 parts:
 1. A fully customizable embedable JS widget, to collect user feedback with screenshots, also allows your users to vote on upcomoing features
 2. Dashboard to control the widget, custumize it and review feedbacks and votes.
 
-After you deploy Moufette to heroku. it will auto-generate the widget snippet code for you, to embed in your web app. Moufette makes it easier for your users to help you build a better app.
 
 <p align="center">
 <img src="https://moufette-public.s3.amazonaws.com/website-assets/dashboard-record.gif" width="90%">
