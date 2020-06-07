@@ -2,7 +2,7 @@
 
 # Moufette
 
-The fast & visual way for your customers to communicate with you. Give a voice to your users so they can help you build, **persevere** or **pivot**!
+The fast & visual way for your users to communicate with you, give them a voice so they can help you build and decide when to **persevere** or **pivot**!
 
 ## How does it work?
 
