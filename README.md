@@ -2,7 +2,7 @@
 
 # Moufette
 
-It's critical to get very early feedback when you start working on a new app. Moufette is an open-source, built for developers. To give a voice to your users so they can help you build, **persevere** or **pivot**!
+The fast & visual way for your customers to communicate with you. Give a voice to your users so they can help you build, **persevere** or **pivot**!
 
 ## How does it work?
 
