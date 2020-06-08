@@ -8332,7 +8332,7 @@ mongoose@^5.9.9:
 
 "moufette-widget@https://github.com/moufette-tools/moufette-widget.git":
   version "0.1.1"
-  resolved "https://github.com/moufette-tools/moufette-widget.git#e78617549675aadf3c642fb118da6b75dff31d07"
+  resolved "https://github.com/moufette-tools/moufette-widget.git#1e692829bb59bdbac88005dbe9a09c825c709a7b"
   dependencies:
     "@apollo/client" "^3.0.0-beta.43"
     "@testing-library/jest-dom" "^4.2.4"
