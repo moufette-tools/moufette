@@ -68,6 +68,8 @@ const resolvers = {
             team: team._id
          });
 
+         // TODO check 
+         // https://github.com/encrypted-dev/userbase/blob/e443ae07de47262d0e468f461a7cdd472123269c/src/userbase-server/admin.js#L1161
          const token = jwt.sign({}, process.env.JWT_SECRET, {
             algorithm: 'HS256',
          })
