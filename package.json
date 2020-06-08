@@ -10,7 +10,8 @@
     "eject": "react-app-rewired eject",
     "copy-widget": "mkdir -p public/widget/ && cp node_modules/moufette-widget/build/static/js/main.* public/widget/",
     "postinstall": "yarn copy-widget && yarn min-js-loader",
-    "min-js-loader": "uglifyjs src/scripts/js-loader.js -o src/scripts/js-loader.min.txt -c -m"
+    "min-js-loader": "uglifyjs src/scripts/js-loader.js -o src/scripts/js-loader.min.txt -c -m",
+    "set-heroku-env": "cat .env.production | tr '\n' ' ' | xargs heroku config:set"
   },
   "dependencies": {
     "@apollo/client": "^3.0.0-beta.43",
