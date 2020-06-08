@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
-const isDev = process.env.NODE_ENV !== 'production';
-
-const mongoUrl = isDev
-  ? 'mongodb://localhost/moufette'
-  : process.env.MONGO_URI
+const mongoUrl = process.env.MONGODB_URI
 
 mongoose.Promise = global.Promise;
 mongoose.set('useFindAndModify', false);
