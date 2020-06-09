@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 const featureSchema = mongoose.Schema(
   {
+    property: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Property",
+      required: true,
+    },
     title: {
       type: String,
       required: true,

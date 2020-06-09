@@ -4,7 +4,7 @@ import { UserOutlined } from '@ant-design/icons'
 import { useQuery } from '@apollo/client';
 import styled from 'styled-components'
 
-import { FEEDBACKS } from '../../apollo/queries'
+import { useQueryFeedback } from '../../hooks/feedback'
 
 
 const Viewer = styled.div<any>`
@@ -31,7 +31,7 @@ const FeedbackList = () => {
 
    const [viewer, setViewer] = useState(null)
 
-   const { loading, error, data } = useQuery(FEEDBACKS, {})
+   const { loading, error, data } = useQueryFeedback()
 
 
    if (loading) return <div>loading...</div>
@@ -41,7 +41,7 @@ const FeedbackList = () => {
          <List
             itemLayout="vertical"
             size="large"
-            dataSource={data.feedbacks}
+            dataSource={data?.feedbacks}
             renderItem={(feedback: any) => (
                <List.Item
                   style={{ paddingLeft: 0 }}

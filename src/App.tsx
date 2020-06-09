@@ -10,7 +10,6 @@ import {
   RocketOutlined
 } from '@ant-design/icons';
 import styled from 'styled-components'
-import { useQuery, useMutation } from '@apollo/client';
 
 import {
   BrowserRouter as Router,
@@ -28,18 +27,21 @@ import Login from './pages/Login'
 import ForgotPassword from './pages/ForgotPassword'
 import Signup from './pages/Signup'
 import Setup from './pages/Setup'
+import Properties from './pages/Properties'
 import Account from './pages/Account'
 import Integrations from './pages/Integrations'
 import UserDropdown from './components/UserDropdown'
+import PropertyDropdown from './components/PropertyDropdown'
 
-import { USER } from './apollo/queries'
+import { useQueryUser } from './hooks/user'
+import { useQueryProperties } from './hooks/property'
 
 const { Header, Content, Footer, Sider } = Layout;
 
 
 function PrivateRoute({ children, ...rest }: any) {
-  const { loading, error, data } = useQuery(USER)
-  console.log({ data })
+  const { loading, error, data } = useQueryUser()
+
   return (
     <Route
       {...rest}
@@ -62,7 +64,7 @@ function PrivateRoute({ children, ...rest }: any) {
 }
 
 function PublicRoute({ children, ...rest }: any) {
-  const { loading, error, data } = useQuery(USER, {})
+  const { loading, error, data } = useQueryUser()
   return (
     <Route
       {...rest}
@@ -86,7 +88,8 @@ function PublicRoute({ children, ...rest }: any) {
 const App = () => {
 
   const [collapsed, setCollapsed] = useState(false)
-  const { loading, error, data } = useQuery(USER, {})
+  const { loading, error, data } = useQueryUser()
+  const propertiesQuery = useQueryProperties()
 
   let location = useLocation();
 
@@ -134,6 +137,13 @@ const App = () => {
 
 
 
+          <Menu.Item key="/properties">
+            <Link to="/properties">
+              <SettingOutlined />
+              <span>Properties</span>
+            </Link>
+          </Menu.Item>
+
           <Menu.Item key="/setup">
             <Link to="/setup">
               <SettingOutlined />
@@ -152,10 +162,15 @@ const App = () => {
       <Layout className="site-layout" style={{ height: '100vh' }}>
         <Header className="site-layout-background" style={{ padding: 0 }}>
           <Row justify="space-between" align="middle">
-            {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-              className: 'trigger',
-              onClick: () => onCollapse(!collapsed),
-            } as any)}
+
+            {
+              React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+                className: 'trigger',
+                onClick: () => onCollapse(!collapsed),
+              } as any)
+            }
+
+            <PropertyDropdown properties={propertiesQuery} />
 
             <span style={{ paddingRight: 24 }}>
               <UserDropdown currentUser={data?.currentUser} />
@@ -187,6 +202,10 @@ const App = () => {
 
           <Route path="/widget/features">
             <Features />
+          </Route>
+
+          <Route path="/properties">
+            <Properties />
           </Route>
 
           <Route path="/setup">

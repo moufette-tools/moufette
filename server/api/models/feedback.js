@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 const feedbackSchema = mongoose.Schema(
   {
+    property: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Property",
+      required: true
+    },
     from: {
       type: String,
     },
@@ -15,7 +20,8 @@ const feedbackSchema = mongoose.Schema(
       default: null,
     },
     person: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Person",
       required: true
     }
 

@@ -7,15 +7,15 @@ const Person = require('../models/person');
 const Feature = require('../models/feature');
 const { produce } = require("immer")
 
-const findFeatures = async () => {
-  return Feature.find()
+const findFeatures = async ({ property }, ctx) => {
+  return Feature.find({ property })
 };
 
-const updateFeature = async ({ feature }, ctx) => {
+const updateFeature = async ({ feature, property }, ctx) => {
   if (feature._id) {
-    return Feature.findOneAndUpdate({ ...feature })
+    return Feature.findOneAndUpdate({ ...feature, property })
   } else {
-    return Feature.create({ ...feature })
+    return Feature.create({ ...feature, property })
   }
 };
 

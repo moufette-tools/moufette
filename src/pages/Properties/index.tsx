@@ -1,8 +1,7 @@
 import React from 'react';
 import { List, Form, Button, Skeleton, Input, Divider } from 'antd';
-import { useQuery, useMutation, } from '@apollo/client';
 
-import { useQueryFeatures, useUpdateFeature } from '../../hooks/feature'
+import { useQueryProperties, useUpdateProperty } from '../../hooks/property'
 
 const layout = {
    labelCol: {
@@ -21,22 +20,22 @@ const tailLayout = {
 
 function App() {
 
-   const { loading, error, data = { features: [] } } = useQueryFeatures()
+   const { loading, error, data = { properties: [] } } = useQueryProperties()
 
    const [form] = Form.useForm();
 
-   const [updateFeature] = useUpdateFeature()
+   const [updateProperty] = useUpdateProperty()
 
    const onFinish = (values: any) => {
-      updateFeature({ variables: { feature: values } }).catch(console.log)
+      updateProperty({ variables: { property: values } }).catch(console.log)
    }
 
    return (
       <>
          <Form {...layout} form={form} onFinish={onFinish}>
             <Form.Item
-               name="title"
-               label="Feature Name"
+               name="name"
+               label="Property Name"
                rules={[
                   {
                      required: true,
@@ -47,8 +46,8 @@ function App() {
             </Form.Item>
 
             <Form.Item
-               name="notes"
-               label="Description"
+               name="url"
+               label="URL"
                rules={[
                   {
                      required: true,
@@ -64,21 +63,21 @@ function App() {
     </Button>
             </Form.Item>
          </Form>
-         <Divider orientation="left">Features</Divider>
+         <Divider orientation="left">Properties</Divider>
          <List
             className="demo-loadmore-list"
             loading={loading}
             itemLayout="horizontal"
             // loadMore={loadMore}
-            dataSource={data.features}
+            dataSource={data.properties}
             renderItem={(item: any) => (
                <List.Item
                   actions={[<a key="list-loadmore-edit">edit</a>, <a key="list-loadmore-more">more</a>]}
                >
                   <Skeleton avatar title={false} loading={false} active>
                      <List.Item.Meta
-                        title={item.title}
-                        description={item.notes}
+                        title={item.name}
+                        description={item.url}
                      />
                      <div>{item.score}</div>
                   </Skeleton>

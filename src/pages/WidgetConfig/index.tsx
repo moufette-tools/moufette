@@ -6,8 +6,7 @@ import { TwitterPicker } from 'react-color';
 
 import Widget from 'moufette-widget/src/App'
 
-import { UPDATE_WIDGET } from './mutation'
-import { WIDGET } from './query'
+import { useQueryProperty, useUpdateWidget, useQueryProperties } from '../../hooks/property'
 
 const layout = {
    labelCol: {
@@ -30,14 +29,14 @@ const WidgetConfig = ({ currentUser }: any) => {
 
    const [dirty, setDirty] = useState(false)
    const [config, setConfig] = useState(null)
-   const [updateWidget] = useMutation(UPDATE_WIDGET)
-   const { loading, error, data } = useQuery(WIDGET, {})
+   const [updateWidget] = useUpdateWidget()
+   const { loading, error, data } = useQueryProperty()
 
    useEffect(() => {
       if (data) {
          // console.log({ data })
-         setConfig({ ...data?.widget })
-         form.setFieldsValue({ ...data?.widget })
+         setConfig({ ...data?.property?.widgetConfig })
+         form.setFieldsValue({ ...data?.property?.widgetConfig })
       }
    }, [loading])
 

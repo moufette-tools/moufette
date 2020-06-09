@@ -1,9 +1,16 @@
 import React, { useEffect } from 'react'
+
+import { useQueryProperty } from '../../hooks/property'
+
 import script from '../../scripts/js-loader.min.txt';
 
 const Setup = ({ currentUser }: any) => {
    const url = window.location.origin
-   const token = currentUser?.team?.token
+   const { loading, error, data } = useQueryProperty()
+
+   if(loading) return <div>loading...</div>
+
+   const token = data?.property?.token
 
    return (
       <>

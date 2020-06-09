@@ -8,46 +8,23 @@ const teamSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    token: {
-      type: String,
-      // required: true,
-    },
     members: {
-      type: [String],
+      type: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+      }],
       required: true,
+    },
+    Properties: {
+      type: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Property"
+      }],
+      default: []
     },
     integrations: {
       type: JSON,
     },
-    widgetConfig: {
-      header: {
-        type: String,
-        default: 'Help us improve Moufette'
-      },
-      theme: {
-        colors: {
-          primary: {
-            type: String,
-            default: '#1890ff'
-          }
-        }
-      },
-      mode: {
-        style: {
-          type: String,
-          enum: ['fab', 'tab'],
-          default: 'fab'
-        },
-        text: {
-          type: String,
-          default: 'We Love Feedback'
-        }
-      },
-      tabs: {
-        feedback: { type: Boolean, default: true },
-        features: { type: Boolean, default: true },
-      }
-    }
   },
   { timestamps: {} },
 );

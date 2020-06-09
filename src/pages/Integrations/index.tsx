@@ -16,7 +16,7 @@ function useQueryURL() {
 }
 
 const Integrations = ({ currentUser }: any) => {
-
+   console.log({ currentUser })
    const [slackLoadnig, setSlackLoading] = useState(false)
    const [connectSlack] = useConnectSlack()
    let query = useQueryURL();
@@ -40,7 +40,7 @@ const Integrations = ({ currentUser }: any) => {
 
 
    const renderSlackButton = () => {
-      if (currentUser.team.integrations.slack) {
+      if (currentUser?.team?.integrations?.slack) {
          return (<div>connected</div>)
       }
       if (slackLoadnig) {

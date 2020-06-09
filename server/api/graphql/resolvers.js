@@ -1,10 +1,10 @@
-const jwt = require('jsonwebtoken')
 const User = require('../models/user')
 const Team = require('../models/team')
 const FeedbackService = require('../services/FeedbackService')
 const UserService = require('../services/UserService')
 const FeatureService = require('../services/FeatureService')
 const PersonService = require('../services/PersonService')
+const PropertyService = require('../services/PropertyService')
 
 const resolvers = {
    Feature: {
@@ -27,13 +27,19 @@ const resolvers = {
          const filtered = { ...integrations }
          Object.keys(filtered).forEach(k => filtered[k] = true)
          return filtered
+      },
+      properties(team) {
+         return PropertyService.findByTeam(team)
       }
    },
    Query: {
-      currentUser: (parent, args, context) => context.getUser(),
-      feedbacks: (parent, args, context) => FeedbackService.findAll(),
-      widget: (parent, args, context) => UserService.getConfig(context),
-      features: (parent, args, context) => FeatureService.findFeatures(context),
+      currentUser: (parent, args, ctx) => ctx.getUser(),
+      feedbacks: (parent, args, ctx) => FeedbackService.findByProperty(args, ctx),
+      features: (parent, args, ctx) => FeatureService.findFeatures(args, ctx),
+      properties: (parent, args, ctx) => PropertyService.findByUser(ctx),
+      property: (parent, args, ctx) => PropertyService.findProperty(args, ctx),
+      // api called from the embedded widget
+      widget: (parent, args, context) => PropertyService.getConfig(context),
    },
    Mutation: {
       vote(_, args, ctx) {
@@ -42,8 +48,8 @@ const resolvers = {
       feedback(_, args, ctx) {
          return FeedbackService.recordFeedback(args, ctx);
       },
-      signup: async (parent, { companyName, firstName, lastName, email, password }, context) => {
-         // const existingUsers = context.User.getUsers();
+      signup: async (parent, { companyName, firstName, lastName, email, password }, ctx) => {
+         // const existingUsers = ctx.User.getUsers();
 
          // TODO how to block other sign ups
          if (process.env.MULTIPLE_TEAMS !== "true" && !!(await User.findOne())) {
@@ -68,22 +74,17 @@ const resolvers = {
             team: team._id
          });
 
-         // TODO check 
-         // https://github.com/encrypted-dev/userbase/blob/e443ae07de47262d0e468f461a7cdd472123269c/src/userbase-server/admin.js#L1161
-         const token = jwt.sign({}, process.env.JWT_SECRET, {
-            algorithm: 'HS256',
-         })
-         // console.log('token:', token)
 
-         await team.update({ $addToSet: { members: user._id }, token })
 
-         context.login(user);
+         await team.update({ $addToSet: { members: user._id } })
+
+         ctx.login(user);
 
          return { user };
       },
-      login: async (parent, { email, password }, context) => {
-         const { user } = await context.authenticate('graphql-local', { email, password });
-         context.login(user);
+      login: async (parent, { email, password }, ctx) => {
+         const { user } = await ctx.authenticate('graphql-local', { email, password });
+         ctx.login(user);
          return { user }
       },
       forgotPassword: async (_, args, ctx) => {
@@ -92,9 +93,11 @@ const resolvers = {
       resetPassword: async (_, args, ctx) => {
          return UserService.resetPassword(args, ctx)
       },
-      logout: (parent, args, context) => context.logout(),
-      updateWidget: (parent, args, ctx) => UserService.updateWidget(args, ctx),
+      logout: (parent, args, ctx) => ctx.logout(),
+      updateWidget: (parent, args, ctx) => PropertyService.updateWidget(args, ctx),
       updateFeature: (parent, args, ctx) => FeatureService.updateFeature(args, ctx),
+
+      updateProperty: (parent, args, ctx) => PropertyService.updateProperty(args, ctx),
 
       // integratinos
       connectSlack: (parent, args, ctx) => UserService.connectSlack(args, ctx),

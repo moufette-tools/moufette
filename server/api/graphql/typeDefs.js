@@ -35,8 +35,22 @@ const typeDefs = gql`
   type Team {
     _id: ID!
     name: String!
-    token: String!
+    properties: [Property]!
     integrations: JSON
+  }
+
+  type Property {
+    _id: ID!
+    name: String!
+    url: String!
+    widgetConfig: JSON!
+    token: String!
+  }
+
+  input PropertyInput {
+    _id: ID
+    name: String!
+    url: String!
   }
 
   type Feature {
@@ -55,11 +69,13 @@ const typeDefs = gql`
 
   type Query {
     currentUser: User
-    feedbacks: [Feedback] @auth
+    feedbacks(property: ID!): [Feedback] @auth
+    properties: [Property]! @tokenOrAuth
+    property(_id: ID!): Property! @tokenOrAuth
 
     widget: JSON! @tokenOrAuth
 
-    features: [Feature]! @tokenOrAuth
+    features(property: ID!): [Feature]! @tokenOrAuth
   }
 
   type Mutation {
@@ -73,12 +89,13 @@ const typeDefs = gql`
     forgotPassword(email: String!): Boolean
     resetPassword(password: String!): Boolean
     logout: Boolean @auth
+    updateProperty(property: PropertyInput!): Property!
 
     # widget
-    updateWidget(config: JSON!): JSON! @auth
+    updateWidget(config: JSON!, property: ID!): JSON! @auth
     vote(voting: Int!, feature: String!): Feature! @tokenOrAuth
+    updateFeature(feature: FeatureInput!, property: ID!): Feature!
 
-    updateFeature(feature: FeatureInput!): Feature!
 
     # integratinos
     connectSlack(code: String!): Boolean

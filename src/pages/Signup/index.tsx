@@ -8,8 +8,7 @@ import {
 
 import styled from 'styled-components/macro'
 
-import { SIGNUP } from './mutation'
-import { USER } from '../../apollo/queries'
+import { useSignup } from '../../hooks/user'
 
 const layout = {
    labelCol: { span: 8 },
@@ -25,7 +24,7 @@ const tailLayout = {
 
 const Demo = () => {
 
-   const [signup] = useMutation(SIGNUP);
+   const [signup] = useSignup();
    let history = useHistory();
    let location = useLocation();
 
@@ -33,12 +32,6 @@ const Demo = () => {
       console.log('Success:', values);
       signup({
          variables: values,
-         update(cache, { data: { signup } }) {
-            cache.writeQuery({
-               query: USER,
-               data: { currentUser: signup.user },
-            });
-         }
       }).then(() => {
          history.replace({ pathname: "/" });
       }).catch(console.log)
