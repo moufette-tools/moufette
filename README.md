@@ -2,7 +2,7 @@
 
 # Moufette
 
-The fast & visual way for your users to communicate with you, give them a voice so they can help you build and decide when to **persevere** or **pivot**!
+Capture feedback in one organized place to inform your product decisions. Let users help you decdie, **persevere** or **pivot**!
 
 ## How does it work?
 
