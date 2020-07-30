@@ -2,7 +2,7 @@
 
 # Moufette
 
-Capture feedback in one organized place to inform your product decisions. Let users help you decdie, **persevere** or **pivot**!
+Capture feedback in one organized place to inform your product decisions. Let users help you decide, **persevere** or **pivot**!
 
 ## How does it work?
 
