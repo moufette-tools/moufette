@@ -8,7 +8,7 @@ Capture feedback in one organized place to inform your product decisions. Let us
 
 Moufette is built of 2 parts:
 1. A fully customizable embedable JS widget, to collect user feedback with screenshots, also allows your users to vote on upcoming features
-2. Dashboard to control the widget, custumize it and review feedbacks and votes.
+2. Dashboard to control the widget, customize it and review feedbacks and votes.
 
 
 <p align="center">
