@@ -7,7 +7,7 @@ Capture feedback in one organized place to inform your product decisions. Let us
 ## How does it work?
 
 Moufette is built of 2 parts:
-1. A fully customizable embedable JS widget, to collect user feedback with screenshots, also allows your users to vote on upcomoing features
+1. A fully customizable embedable JS widget, to collect user feedback with screenshots, also allows your users to vote on upcoming features
 2. Dashboard to control the widget, custumize it and review feedbacks and votes.
 
 
@@ -33,8 +33,8 @@ Join our [Moufette Slack](https://join.slack.com/t/moufette/shared_invite/zt-dv3
 - [x] **Super Easy to integrate** into any website with a tiny js snippet. 
 - [x] **Clean & simple Dashboard** to review feedback with screenshots from your users.
 - [x] Super easy deploy using **Heroku**, and **Docker** coming soon.
-- [x] Visitors vote for upcomoing features.
-- [x] Customize widget from dashboard
+- [x] Visitors can vote for upcoming features.
+- [x] Customize widget from dashboard.
 
 ## In the making
 
