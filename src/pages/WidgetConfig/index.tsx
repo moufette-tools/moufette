@@ -24,18 +24,26 @@ const tailLayout = {
    },
 };
 
+const DEFAULT_CONFIG = {
+   theme: {
+      colors: {
+         primary: '#0693e3'
+      }
+   }
+}
+
 const WidgetConfig = ({ currentUser }: any) => {
    const [form] = Form.useForm();
 
    const [dirty, setDirty] = useState(false)
-   const [config, setConfig] = useState(null)
+   const [config, setConfig] = useState(DEFAULT_CONFIG)
    const [updateWidget] = useUpdateWidget()
    const { loading, error, data } = useQueryProperty()
 
    useEffect(() => {
       if (data) {
          // console.log({ data })
-         setConfig({ ...data?.property?.widgetConfig, location: { position: 'absolute' } })
+         setConfig({ ...data?.property?.widgetConfig })
          form.setFieldsValue({ ...data?.property?.widgetConfig })
       }
    }, [loading])
@@ -150,10 +158,7 @@ const WidgetConfig = ({ currentUser }: any) => {
          </Col>
          <Col offset={1} span={11} style={{ display: 'flex' }}>
             <BrowserFrame url="https://yourAwsomeWebsite.com">
-               {
-                  !!config &&
-                  <Widget config={config} />
-               }
+               <Widget config={{ ...config, location: { position: 'absolute' } }} />
             </BrowserFrame>
          </Col>
       </Row>
