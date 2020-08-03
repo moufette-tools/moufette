@@ -35,7 +35,7 @@ const WidgetConfig = ({ currentUser }: any) => {
    useEffect(() => {
       if (data) {
          // console.log({ data })
-         setConfig({ ...data?.property?.widgetConfig })
+         setConfig({ ...data?.property?.widgetConfig, location: { position: 'absolute' } })
          form.setFieldsValue({ ...data?.property?.widgetConfig })
       }
    }, [loading])
