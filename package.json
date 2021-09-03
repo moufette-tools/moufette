@@ -41,7 +41,7 @@
     "graphql": "^15.0.0",
     "graphql-passport": "^0.6.3",
     "graphql-tools": "^5.0.0",
-    "immer": "^6.0.3",
+    "immer": "^9.0.6",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.9",
     "moufette-widget": "https://github.com/moufette-tools/moufette-widget.git",
